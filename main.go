@@ -86,8 +86,9 @@ func run(importPath, variableName, tag string) error {
 func goRun(src string, tags string) error {
 	// Create a temp folder.
 	var cwd, _ = os.Getwd()
-	fmt.Fprintln(os.Stderr, "current working directory:", cwd)
 	tempDir := filepath.Join(cwd, "vfsgendev")
+
+	os.Mkdir(tempDir, os.ModePerm)
 
 	defer func() {
 		err := os.RemoveAll(tempDir)
