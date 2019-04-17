@@ -84,7 +84,9 @@ func run(importPath, variableName, tag string) error {
 
 // goRun runs Go code src with build tags.
 func goRun(src string, tags string) error {
-	tempDir := "vfsgendev"
+
+	fmt.Println("starting to generate")
+	tempDir := "vfsgendev_gen"
 
 	os.Mkdir(tempDir, os.ModePerm)
 
@@ -108,5 +110,9 @@ func goRun(src string, tags string) error {
 	cmd := exec.Command("go", "run", "-tags="+tags, tempFile)
 	cmd.Stdout = os.Stdout
 	cmd.Stderr = os.Stderr
-	return cmd.Run()
+	err = cmd.Run()
+
+	fmt.Println("finished generation")
+
+	return err
 }
