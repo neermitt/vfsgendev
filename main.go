@@ -84,9 +84,7 @@ func run(importPath, variableName, tag string) error {
 
 // goRun runs Go code src with build tags.
 func goRun(src string, tags string) error {
-	// Create a temp folder.
-	var cwd, _ = os.Getwd()
-	tempDir := filepath.Join(cwd, "vfsgendev")
+	tempDir := "vfsgendev"
 
 	os.Mkdir(tempDir, os.ModePerm)
 
