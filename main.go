@@ -90,12 +90,14 @@ func goRun(src string, tags string) error {
 
 	os.Mkdir(tempDir, os.ModePerm)
 
-	defer func() {
-		err := os.RemoveAll(tempDir)
-		if err != nil {
-			fmt.Fprintln(os.Stderr, "warning: error removing temp dir:", err)
-		}
-	}()
+	/*
+		defer func() {
+			err := os.RemoveAll(tempDir)
+			if err != nil {
+				fmt.Fprintln(os.Stderr, "warning: error removing temp dir:", err)
+			}
+		}()
+	*/
 
 	// Write the source code file.
 	tempFile := filepath.Join(tempDir, "generate.go")
